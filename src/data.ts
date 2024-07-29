@@ -1,3 +1,5 @@
+import { AutocompleteOption } from "./components/Autocomplete";
+
 export const facts = [
   { label: "Hummingbirds don't walk; they crawl." },
   { label: "The world's largest land mammal is the African elephant." },
@@ -20,14 +22,15 @@ export const facts = [
   },
 ];
 
-export const animals = [
-  { label: "Elephant" },
-  { label: "Giraffe" },
-  { label: "Hippopotamus" },
-  { label: "Rhinoceros" },
-  { label: "Zebra" },
-  { label: "Giraffe" },
-  { label: "Hippopotamus" },
-  { label: "Rhinoceros" },
-  { label: "Zebra" },
+export const animals: AutocompleteOption[] = [
+  { label: "Dog" },
+  { label: "Cat" },
+  { label: "Bird" },
+  { label: "Snake" },
+  { label: "Lizard" },
+  { label: "Turtle" },
+  { label: "Frog" },
+  { label: "Fish" },
+  { label: "Shark" },
+  { label: "Whale" },
 ];

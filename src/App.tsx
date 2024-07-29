@@ -9,7 +9,7 @@ function App() {
       <Autocomplete
         options={animals}
         isOptionEqualToValue={(option, value) => option.label === value.label}
-        selectedIcon={<CheckIcon className="text-neutral-200 w-4 h-4" />} // you can pass a custom icon
+        selectedIcon={<CheckIcon className="text-neutral-100 w-4.5 h-4.5" />} // you can pass a custom icon
         description="Type an animal to search for it"
         placeholder="Search for an animal..."
         variant="outline" // "bordered" | "primary" | "ghost"

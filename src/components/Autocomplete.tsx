@@ -35,19 +35,19 @@ const Autocomplete = React.forwardRef(function Autocomplete(
   } = props;
 
   const {
+    id,
+    value,
+    dirty,
+    focused,
+    anchorEl,
+    popupOpen,
+    groupedOptions,
+    setAnchorEl,
     getRootProps,
     getInputProps,
     getClearProps,
     getListboxProps,
     getOptionProps,
-    value,
-    dirty,
-    id,
-    popupOpen,
-    focused,
-    anchorEl,
-    setAnchorEl,
-    groupedOptions,
   } = useAutocomplete({
     ...props,
   });
@@ -62,10 +62,10 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         <InputSearchField
           id={id}
           ref={rootRef}
-          {...getRootProps(other)}
           disabled={disabled}
           readOnly={readOnly}
           getInputProps={getInputProps}
+          {...getRootProps(other)}
           focused={focused}
           variant={variant}
           placeholder={placeholder}
@@ -96,7 +96,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
         </Popper>
       )}
       {description && (
-        <p className="text-left text-sm text-neutral-400 mt-2 mb-0">
+        <p className="mx-2 text-left text-sm text-neutral-400 mt-2 mb-0">
           {description}
         </p>
       )}

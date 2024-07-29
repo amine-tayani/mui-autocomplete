@@ -14,14 +14,14 @@ interface OptionsListProps {
 
 const OptionsList: React.FC<OptionsListProps> = ({
   getListboxProps,
-  groupedOptions,
   getOptionProps,
+  groupedOptions,
   selectedIcon,
   value,
 }) => (
   <ul
     {...getListboxProps()}
-    className="text-sm box-border p-1.5 my-3 mx-0 min-w-[320px] rounded-xl overflow-auto outline-0 max-h-[300px] z-[1] bg-neutral-800 border border-gray-700 text-gray-200"
+    className="scrollbar box-border px-5 py-4 space-y-2 my-3 mx-0 min-w-[320px] rounded-md overflow-auto outline-0 max-h-[300px] z-[1] bg-neutral-800 text-gray-200"
   >
     {groupedOptions.map((option, index) => {
       const optionProps = getOptionProps({ option, index });
@@ -29,19 +29,17 @@ const OptionsList: React.FC<OptionsListProps> = ({
         <li
           key={index}
           {...optionProps}
-          className="list-none flex justify-between p-2 rounded-lg cursor-default last-of-type:border-b-0 hover:cursor-pointer aria-selected:bg-blue-900 aria-selected:text-white"
+          className="list-none flex items-center justify-between px-4 py-2 rounded-md cursor-default last-of-type:border-b-0 hover:cursor-pointer aria-selected:bg-blue-600 hover:bg-blue-500 hover:text-white aria-selected:text-white"
         >
           {option.label}
           {selectedIcon && value && value.label === option.label && (
-            <span className="text-neutral-200 font-medium text-xs">
-              {selectedIcon}
-            </span>
+            <span>{selectedIcon}</span>
           )}
         </li>
       );
     })}
     {groupedOptions.length === 0 && (
-      <li className="list-none p-2 cursor-default">No Options</li>
+      <li className="list-none  px-4 py-3 cursor-default">No Options</li>
     )}
   </ul>
 );
