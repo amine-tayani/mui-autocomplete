@@ -19,3 +19,15 @@ export const facts = [
     label: "The average person spends about 5 years of their life dreaming.",
   },
 ];
+
+export const animals = [
+  { label: "Elephant" },
+  { label: "Giraffe" },
+  { label: "Hippopotamus" },
+  { label: "Rhinoceros" },
+  { label: "Zebra" },
+  { label: "Giraffe" },
+  { label: "Hippopotamus" },
+  { label: "Rhinoceros" },
+  { label: "Zebra" },
+];

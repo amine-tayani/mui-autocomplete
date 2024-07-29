@@ -1,15 +1,18 @@
+import { CheckIcon } from "lucide-react";
 import Autocomplete from "./components/Autocomplete";
-import { facts } from "./data";
+import { animals } from "./data";
+// import { facts } from "./data";
 
 function App() {
   return (
     <div className="flex flex-col pb-20 bg-neutral-900 items-center justify-center h-screen">
-      <h1 className="text-6xl font-bold text-neutral-200 mb-8">
-        Search for facts
-      </h1>
       <Autocomplete
-        options={facts}
+        options={animals}
         isOptionEqualToValue={(option, value) => option.label === value.label}
+        selectedIcon={<CheckIcon className="text-neutral-200 w-4 h-4" />} // you can pass a custom icon
+        description="Type an animal to search for it"
+        placeholder="Search for an animal..."
+        variant="outline" // "bordered" | "primary" | "ghost"
       />
     </div>
   );

@@ -5,19 +5,32 @@ import {
 } from "@mui/base/useAutocomplete";
 import { Popper } from "@mui/base/Popper";
 import { unstable_useForkRef as useForkRef } from "@mui/utils";
-import { facts } from "../data";
 import InputSearchField from "./InputSearchField";
 import ClearButton from "./ClearButton";
 import OptionsList from "./OptionsList";
 
+export type AutocompleteOption = {
+  label: string;
+  [key: string]: unknown;
+};
+
 const Autocomplete = React.forwardRef(function Autocomplete(
-  props: UseAutocompleteProps<(typeof facts)[number], false, false, false>,
+  props: UseAutocompleteProps<AutocompleteOption, false, false, false> & {
+    description?: string;
+    variant?: "outline" | "bordered" | "primary" | "ghost";
+    selectedIcon?: React.ReactNode;
+    placeholder?: string;
+  },
   ref: React.ForwardedRef<HTMLDivElement>
 ) {
   const {
     disableClearable = false,
     disabled = false,
     readOnly = false,
+    variant = "outline",
+    description,
+    placeholder,
+    selectedIcon,
     ...other
   } = props;
 
@@ -27,6 +40,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
     getClearProps,
     getListboxProps,
     getOptionProps,
+    value,
     dirty,
     id,
     popupOpen,
@@ -43,7 +57,7 @@ const Autocomplete = React.forwardRef(function Autocomplete(
   const rootRef = useForkRef(ref, setAnchorEl);
 
   return (
-    <React.Fragment>
+    <div>
       <div className="flex">
         <InputSearchField
           id={id}
@@ -53,6 +67,8 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           readOnly={readOnly}
           getInputProps={getInputProps}
           focused={focused}
+          variant={variant}
+          placeholder={placeholder}
         />
         {hasClearIcon && <ClearButton getClearProps={getClearProps} />}
       </div>
@@ -73,11 +89,18 @@ const Autocomplete = React.forwardRef(function Autocomplete(
           <OptionsList
             getListboxProps={getListboxProps}
             getOptionProps={getOptionProps}
-            groupedOptions={groupedOptions as typeof facts}
+            groupedOptions={groupedOptions as AutocompleteOption[]}
+            selectedIcon={selectedIcon}
+            value={value}
           />
         </Popper>
       )}
-    </React.Fragment>
+      {description && (
+        <p className="text-left text-sm text-neutral-400 mt-2 mb-0">
+          {description}
+        </p>
+      )}
+    </div>
   );
 });
 
